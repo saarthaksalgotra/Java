@@ -6,16 +6,15 @@ public class board {
         Scanner scn=new Scanner(System.in);
         int dest=scn.nextInt();
         int dice=scn.nextInt();
-        ArrayList<String> paths=new ArrayList();
-        int ans=sol(0,dice,dest,"",paths);
-        System.out.println(String.join(" ",paths));
+        int ans=sol(0,dice,dest,"");
+        System.out.println();
         System.out.print(ans);
     }
-    public static int sol(int cp,int dice,int dest,String ans,ArrayList<String>paths)
+    public static int sol(int cp,int dice,int dest,String ans)
     {
         if(cp==dest)
         {
-            paths.add((ans));
+            System.out.print(ans+" ");
             return 1;
         }
         if(cp>dest)
@@ -25,7 +24,7 @@ public class board {
         int cnt=0;
         for(int i=1;i<=dice;i++)
         {
-            cnt+=sol(cp+i,dice,dest,ans+i,paths);
+            cnt+=sol(cp+i,dice,dest,ans+i);
         }
         return cnt;
     }
